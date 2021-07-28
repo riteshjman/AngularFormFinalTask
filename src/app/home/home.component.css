@@ -1,0 +1,31 @@
+.page {
+    color: rgb(17, 17, 17);
+    padding: 0 1rem;
+    background: #fdfdfd;
+}
+  
+#st {
+    text-align: center;
+  }
+  
+   
+ 
+  :host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  mat-drawer {
+    width: 260px;
+  }
+  mat-drawer-container {
+    height: 200%;
+  }
+  
+  mat-drawer {
+    background: #7e7e7e;
+  }
+  
+    
+  
