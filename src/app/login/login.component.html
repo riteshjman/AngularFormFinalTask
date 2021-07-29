@@ -1,23 +1,24 @@
 <div fxLayoutAlign="center center FxFlexFill" id="d" >
   <mat-card fxFlex="25">
     <mat-toolbar color="primary">Admin Login Page </mat-toolbar>
-    <form class="container"  fxLayoutAlign="stretch" fxLayout="column">
+    <form class="container"  fxLayoutAlign="stretch" fxLayout="column" #loginInForm="ngForm"  (ngSubmit)="login(loginInForm);">
        <mat-form-field >
-              <div class="form-group">
-              <mat-label>Email</mat-label>
-              <input matInput type="email" class="form-control" name="email" [(ngModel)]="email">
-              </div>
+        <div class="form-group">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input matInput type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" ngModel email required #email="ngModel">
+        <small  class="form-text text-muted" *ngIf="email.touched && !email.valid" class="text-danger">enter the email or valid email</small>
+        <div id="emailHelp" class="form-text"></div>
+    </div>
         </mat-form-field>
 
         <mat-form-field >
           <div class="form-group">
-          
-          <label for="exampleInputPassword1">Password</label>
-          <input matInput type="password" class="form-control" name="password" [(ngModel)]="password">
-        </div>
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input matInput type="password" class="form-control" id="exampleInputPassword1" name="password" ngModel required>
+            </div>
         </mat-form-field>
      
-        <button mat-raised-button type="submit" class="btn btn-success" (click)="logIn()"><b>Log In</b></button>
+        <button mat-raised-button type="submit" class="btn btn-success" [disabled]="!loginInForm.valid"><b>Log In</b></button>
 </form>
 </mat-card>
 </div>

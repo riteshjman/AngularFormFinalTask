@@ -16,15 +16,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     
     }
-    alert:boolean = false;
-    email:string;
-    password:string;
-    
-    logIn(){
+   
+    login(loginInForm:NgForm){
       
-    if(this.email == "soumya@gmail.com" && this.password =="123")
+    if(loginInForm.value.email== "rs868059@gmail.com" && loginInForm.value.password=="123")
     {
-      this.router.navigate(["./home"]);
+      this.router.navigate(["./signup"]);
     }
     else{
      

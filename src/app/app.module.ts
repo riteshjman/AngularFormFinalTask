@@ -22,6 +22,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {ReactiveFormsModule} from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -34,6 +36,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     DashboardComponent,
     SidenavComponent,
     LoginComponent,
+    SignupComponent,
    
    
   ],
@@ -54,7 +57,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatButtonModule,
     MatCardModule,
     ReactiveFormsModule,
-    
+    NgbModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent],
