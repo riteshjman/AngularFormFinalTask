@@ -13,7 +13,7 @@ This section outlines the execution order of the SQL scripts required to generat
 |-------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
 | 1     | sp_01_int_calendar                                         | This script creates a calendar table which has every month from 1950 to 2050                                                                                              |
 | 2     | sp_01_int_transactions                                     | This script creates a SSOT for transaction data(Sales Order, Return Authorization and Credit Memos) from NS     |
-| 3     | sp_02_int_sales_order_to_target_agency_id                  | -                                                                                               |
+| 3     | sp_02_int_sales_order_to_target_agency_id                  |  This script creates a table mapping sales order number to target agency id                                                                                             |
 | 4     | sp_02_int_transaction_documents_to_sales_order_mapping     | This script creates the mapping between a transactio with a sales order where possible                                                                                              |
 | 5     | sp_03_int_arr_spread                                       |This script creates the ARR spreading based on the logic used by CP internally                                           |
 | 6     | sp_03_int_journals                                         | -                                                                                               |
