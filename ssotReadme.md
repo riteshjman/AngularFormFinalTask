@@ -4,10 +4,11 @@
 This document provides details about the stored procedures, including their purpose, usage, and execution process.
 
 ## General Purpose of the Layer
-This layer is responsible for transforming core data into SSOT layer
+This layer is responsible for transforming core data into SSOT layer. This transformed tables will be collated into a single, unified table, which will serve as the source table for the Snowball Accelerator. This consolidated source will then be used to drive insights and reporting in our analysis phase.
 
 ## Script Scheduling
-This section outlines the execution order of the sql scripts
+This section outlines the execution order of the sql scripts.
+
 
 | Order | Script Name                                                | Purpose                                                                                         |
 |-------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
@@ -28,7 +29,7 @@ This section outlines the execution order of the sql scripts
 | 15    | sp_bridge_test                               | The check, where All metrics reconcile accurately and arr bridge balances                                                                                             |
 
 ## Script Details
-This section outlines the details about the SQL scripts required to generate the final outputs.
+This section outlines the details about the SQL scripts required to generate the final outputs. The following stored procedures and tables are part of the accelerator, where key performance indicators (KPIs) are calculated and transformed:
 | Order | Source             | Target                            | Summarisation Logic                                                                                                                                                                                                                                                                                                                                                                              | Filters Applied                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |-------|--------------------|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1     | core_customer_cube | revenue                            | • Type Casting <br>  • Calculate Revenue, ARR, MRR, Volume <br> • Generating Primary Keys using MD5() <br> • Truncates the date                                                                                                                                                                                                                                                                 | • month >= '2021-01-01' AND product_suite != 'CivicHR' <br> • revenue IS NOT NULL  AND revenue <> 0.00                                                                                                                                                                                                                                                                                                                                                          |
