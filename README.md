@@ -1,27 +1,35 @@
-# Adminpanel
+# Core layer Stored Procedure Documentation 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
+## Overview
+This document provides details about the stored procedure, including its purpose, usage, and execution process.
 
-## Development server
+## General Purpose of the Layer
+This layer is responsible for transforming prep data into core reporting and analysis.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Script Scheduling
+This section outlines the execution order of the SQL scripts required to generate the final outputs.
 
-## Code scaffolding
+| Order | Script Name                                                | Purpose                                                                                      |
+|-------|------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| 1     | sp_01_int_calendar                                         | -                                                                                            |
+| 2     | sp_01_int_transactions                                     | Creates a single source of truth for Sales Orders, Return Authorizations, and Credit Memos. |
+| 3     | sp_02_int_sales_order_to_target_agency_id                  | -                                                                                            |
+| 4     | sp_02_int_transaction_documents_to_sales_order_mapping     | -                                                                                            |
+| 5     | sp_03_int_arr_spread                                       | Creates the ARR spreading based on internal CP logic.                                        |
+| 6     | sp_03_int_journals                                         | -                                                                                            |
+| 7     | sp_04_int_arr_contractual                                  | -                                                                                            |
+| 8     | sp_04_int_arr_revenues_transactional                       | -                                                                                            |
+| 9     | sp_04_int_revenues_contractual                             | -                                                                                            |
+| 10    | sp_04_int_revenues_others                                  | -                                                                                            |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Script Details
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| Script Name                                            | Source     | Target                                 | Summarisation Logic                                                                                                         |
+|--------------------------------------------------------|------------|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| sp_01_int_calendar                              | -          | -                                      | -                                                                                                                           |
+| sp_01_int_transactions                           | netsuite_transaction_part1 | int_transactions          | • Transaction Classification <br> • Join transactions with transaction line <br> • Data Cleaning & Preparation <br> • Get data of: <br> - Revenue class <br> - Item <br> - Product suite <br> - Product subtype <br> - Entity <br> - Customer |
+| sp_02_int_sales_order_to_target_agency_id        | -          | -                                      | -                                                                                                                           |
+| sp_02_int_transaction_documents_to_sales_order_mapping| -      | -                                      | -                                                                                                                           |
+| sp_03_int_arr_spread                        | int_transactions | int_arr_spread | • Revenue Type Classification <br> • Sales Order Number Mapping <br> • Calculate ARR and MRR <br> • Find the spread dates, period, and amount |
+| sp_03_int_journals| -          | -                                      | -                                                                                                                           |
+| sp_04_int_arr_contractual                        | -          | -                                      | -                                                                                                                           |
