@@ -16,11 +16,11 @@ This section outlines the execution order of the SQL scripts required to generat
 | 3     | sp_02_int_sales_order_to_target_agency_id                  |  This script creates a table mapping sales order number to target agency id                                                                                             |
 | 4     | sp_02_int_transaction_documents_to_sales_order_mapping     | This script creates the mapping between a transactio with a sales order where possible                                                                                              |
 | 5     | sp_03_int_arr_spread                                       |This script creates the ARR spreading based on the logic used by CP internally                                           |
-| 6     | sp_03_int_journals                                         | -                                                                                               |
-| 7     | sp_04_int_arr_contractual                                  | -                                                                                               |
-| 8     | sp_04_int_arr_revenues_transactional                       | -                                                                                               |
-| 9     | sp_04_int_revenues_contractual                             | -                                                                                               |
-| 10    | sp_04_int_revenues_others                                  | -                                                                                               |
+| 6     | sp_03_int_journals                                         | This script creates revenue recognized based on the journal entries                                                                                              |
+| 7     | sp_04_int_arr_contractual                                  |  This script creates the contractual ARR based on the ARR spread                                                                                            |
+| 8     | sp_04_int_arr_revenues_transactional                       | This script creates the transactional ARR and revenue for each customer at month level starting from Jan 2021                                                                                              |
+| 9     | sp_04_int_revenues_contractual                             | This script creates the contractual revenue for each customer at month level starting from Jan 2021                                                                                              |
+| 10    | sp_04_int_revenues_others                                  | This script creates the adjustment and other revenue at month level starting from Jan 2021                                                                                             |
 | 11    | sp_02_int_transaction_documents_to_customer_ids                                  | This script creates a table mapping transactions to end user customer id                                                                                             |
 
 ## Script Details
