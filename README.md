@@ -11,7 +11,7 @@ This section outlines the execution order of the SQL scripts required to generat
 
 | Order | Script Name                                                | Purpose                                                                                         |
 |-------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
-| 1     | sp_01_int_calendar                                         | -                                                                                               |
+| 1     | sp_01_int_calendar                                         | This script creates a calendar table which has every month from 1950 to 2050                                                                                            |
 | 2     | sp_01_int_transactions                                     | Creates a single source of truth for Sales Orders, Return Authorizations, and Credit Memos.     |
 | 3     | sp_02_int_sales_order_to_target_agency_id                  | -                                                                                               |
 | 4     | sp_02_int_transaction_documents_to_sales_order_mapping     | -                                                                                               |
