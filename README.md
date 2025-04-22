@@ -39,3 +39,14 @@ This section outlines the details about the SQL scripts required to generate the
 | 9     | int_journals                 | int_revenues_contractual                    | •To Fetch Journal Data <br> •Calculating Contractual Revenue <br> • Added fields such as salesforce_target_agency_id, customer_id, and parent_customer_id <br>• Join with transaction_to_sales_order_mapping, sales_order_target_agency_data, transaction_target_agency_data |  • transaction date is on or after 2021-01-01, GL account is 137 (Fees), and both item and customer IDs are present                                                                                                                                           |
 | 10    | int_journals                 | int_revenues_others                          |• Get adjustment revenue per month for all accounts <br>• Calculate month                                                                                                                             | •tran_date >= '2021-01-01' <br> • (netsuite_account_id IN (812, 650, 649) AND ((item_product_suite_name = 'General' OR (item_product_suite_name IS NULL AND (revenue_plan_revenue_class = 'One-Time' OR customer_id IS NULL OR item_id IS NULL))) OR revenue_plan_revenue_class = 'One-Time')) OR (netsuite_account_id = 137 AND (item_id IS NULL OR customer_id IS NULL)) OR (netsuite_account_id IN (679, 956, 717)) |
 | 11    | int_transactions             | int_transaction_documents_to_customer_ids    |• To fetch Distinct records                                                                                                                                                                                                               | -                                                                                                                                                                                                                                                                                                |
+## Core Layer Checklist
+
+- Source name shouldn't be present in the table or column name
+- Identify the PK Id for the table
+- Validate the revenue numbers against the prep layer tables
+- Core tables:
+  - Verify the columns required for the reporting
+  - Use join and bring the necessary columns and calculated columns
+    - Check the count of rows before and after the join
+  - If we are combining the tables, need to verify the count
+
