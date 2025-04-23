@@ -9,7 +9,7 @@ This layer is responsible for transforming prep data into core reporting and ana
 ## Script Scheduling
 This section outlines the execution order of the sql scripts
 
-| Order | Script Name                                                | Purpose                                                                                         |
+| OrderID | Script Name                                                | Purpose                                                                                         |
 |-------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
 | 1     | sp_01_int_calendar                                         | This script creates a calendar table which has every month from 1950 to 2050                                                                                              |
 | 2     | sp_01_int_transactions                                     | This script creates a SSOT for transaction data(Sales Order, Return Authorization and Credit Memos) from NS     |
